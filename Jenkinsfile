@@ -35,16 +35,11 @@ pipeline {
         beforeAgent true
         branch 'master'
       }
-      input {
-        message 'Which Version?'
-        id 'Deploy'
-        parameters {
-          choice(name: 'APP_VERSION', choices: '''v1.1
-v1.2
-v1.3''', description: 'What to deploy?')
-        }
-      }
       steps {
+        timeout(time: 5, unit: 'MINUTES') {
+          input(message: 'Approve Deployment?', id: 'deploy', ok: 'Approved')
+        }
+        
         echo "Deploying ${APP_VERSION}."
       }
     }
