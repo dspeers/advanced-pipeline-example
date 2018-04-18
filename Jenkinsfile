@@ -31,6 +31,10 @@ pipeline {
       }
     }
     stage('Deploy') {
+      when {
+        beforeAgent true
+        branch 'master'
+      }
       input {
         message 'Which Version?'
         id 'Deploy'
