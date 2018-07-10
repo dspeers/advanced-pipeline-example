@@ -44,6 +44,9 @@ pipeline {
       }
     }
   }
+  environment {
+    APP_VERSION = '2.3'
+  }
   parameters {
     string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
